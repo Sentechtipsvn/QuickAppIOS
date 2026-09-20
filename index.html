@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>Quick App Launcher</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Background -->
+    <div id="app-background"></div>
+
+    <!-- Khung kính mờ chứa Icon 4x6 -->
+    <div class="glass-container" id="app-grid">
+        <!-- Icon sẽ được render từ main.js vào đây -->
+    </div>
+
+    <!-- Nút Cài đặt -->
+    <button id="btn-setting">
+        <img src="image/icon_setting.png" alt="Settings">
+    </button>
+
+    <!-- Modal Cài đặt -->
+    <div id="setting-modal" class="modal hidden">
+        <div class="modal-content glass-panel">
+            <div class="modal-header">
+                <h2 data-i18n="settings_title">Cài Đặt</h2>
+                <button id="btn-info" class="btn-icon">
+                    <div class="icon-info">i</div>
+                </button>
+                <button id="btn-close-setting" class="btn-close">&times;</button>
+            </div>
+            
+            <div class="modal-body">
+                <!-- Tùy chỉnh nền -->
+                <div class="setting-group">
+                    <label data-i18n="bg_image">Ảnh Nền (URL)</label>
+                    <input type="text" id="input-bg-image" placeholder="https://...">
+                </div>
+                
+                <div class="setting-group stacked">
+                    <label data-i18n="bg_color">Màu Nền</label>
+                    <input type="color" id="color-bg" class="apple-color-picker">
+                </div>
+
+                <div class="setting-group stacked">
+                    <label data-i18n="container_color">Màu Khung Chứa</label>
+                    <input type="color" id="color-container" class="apple-color-picker">
+                </div>
+
+                <!-- Tùy chỉnh đổ bóng -->
+                <h3 data-i18n="shadow_config">Cấu Hình Đổ Bóng</h3>
+                
+                <div class="setting-group">
+                    <label data-i18n="shadow_type">Kiểu Đổ Bóng</label>
+                    <select id="select-shadow-type">
+                        <!-- Render từ theme.js -->
+                    </select>
+                </div>
+
+                <div class="setting-group stacked">
+                    <label>Trục X</label>
+                    <input type="range" id="slider-shadow-x" min="-20" max="20" value="0">
+                </div>
+                
+                <div class="setting-group stacked">
+                    <label>Trục Y</label>
+                    <input type="range" id="slider-shadow-y" min="-20" max="20" value="10">
+                </div>
+                
+                <div class="setting-group stacked">
+                    <label>Độ Mờ (Blur)</label>
+                    <input type="range" id="slider-shadow-b" min="0" max="50" value="20">
+                </div>
+                
+                <div class="setting-group stacked">
+                    <label>Lan Tỏa (Spread)</label>
+                    <input type="range" id="slider-shadow-s" min="-20" max="20" value="0">
+                </div>
+
+                <div class="setting-group stacked">
+                    <label data-i18n="shadow_color">Màu Bóng</label>
+                    <input type="color" id="color-shadow" class="apple-color-picker">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Info -->
+    <div id="info-modal" class="modal hidden">
+        <div class="modal-content glass-panel">
+            <div class="modal-header">
+                <h2 data-i18n="info_title">Thông Tin</h2>
+                <button id="btn-close-info" class="btn-close">&times;</button>
+            </div>
+            <div class="modal-body list-menu">
+                <a href="https://browse.shortcuty.app/user/Sentechtipsvn" target="_blank" class="menu-item" data-i18n="follow">Theo dõi</a>
+                <a href="mailto:sentechtips@gmail.com" class="menu-item" data-i18n="contact">Liên hệ</a>
+                <button id="btn-about" class="menu-item" data-i18n="about">Giới thiệu</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Popup Giới thiệu -->
+    <div id="about-popup" class="modal hidden">
+        <div class="modal-content popup-panel">
+            <h3>Quick App Launcher</h3>
+            <p><strong>Version:</strong> 1.0.0</p>
+            <p><strong>Author:</strong> Sếp Sen (Sentechtipsvn)</p>
+            <p data-i18n="about_desc">Webclip khởi chạy ứng dụng siêu tốc qua Phím tắt iOS. Hỗ trợ đa ngôn ngữ, tự động sáng tối, tuỳ chỉnh giao diện linh hoạt.</p>
+            <button id="btn-close-about" class="btn-full" data-i18n="close">Đóng</button>
+        </div>
+    </div>
+
+    <script src="vi-VN.json" type="application/json" id="i18n-vi"></script>
+    <script src="theme.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>
